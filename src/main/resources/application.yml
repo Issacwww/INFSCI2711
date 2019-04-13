@@ -1,0 +1,7 @@
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: adb_pro
+      #uri: mongodb+srv://user:1q2w3e4r5t@adb-shard-00-00-iyiwl.mongodb.net:27017/adbproj
