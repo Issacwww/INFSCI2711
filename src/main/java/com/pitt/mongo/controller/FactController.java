@@ -23,8 +23,6 @@ public class FactController {
     @Autowired
     private MonthRegionRepo monthRegionRepo ;
     @Autowired
-    private YearRegionAttackRepo yearRegionAttackRepo ;
-    @Autowired
     private MonthStateAttackRepo monthStateAttackRepo ;
     @Autowired
     private DayCountryRepo dayCountryRepo ;
@@ -38,8 +36,6 @@ public class FactController {
     private MonthCountryAttackRepo monthCountryAttackRepo ;
     @Autowired
     private YearCountryWeapRepo yearCountryWeapRepo ;
-    @Autowired
-    private YearRegionWeapRepo yearRegionWeapRepo ;
     @Autowired
     private MonthStateWeapRepo monthStateWeapRepo ;
     @Autowired
@@ -57,8 +53,6 @@ public class FactController {
     @Autowired
     private YearStateTargetRepo yearStateTargetRepo ;
     @Autowired
-    private YearRegionRepo yearRegionRepo ;
-    @Autowired
     private YearCountryTargetRepo yearCountryTargetRepo ;
     @Autowired
     private MonthCountryTargetRepo monthCountryTargetRepo ;
@@ -70,25 +64,20 @@ public class FactController {
     private YearStateRepo yearStateRepo ;
     @Autowired
     private MonthStateTargetRepo monthStateTargetRepo ;
-    @Autowired
-    private YearRegionTargetRepo yearRegionTargetRepo ;
-
     @GetMapping
     public Object queryEntrance(
             @RequestParam("year") Integer year, @RequestParam("month") Integer month, @RequestParam("day") Integer day,
             @RequestParam("region") String regioncode, @RequestParam("country") String country, @RequestParam("state") String state,
-            @RequestParam(value = "situation") Integer situation, @RequestParam(value = "typev") Integer typev)
+            @RequestParam(value = "situation") Integer situation, @RequestParam("types") List<Integer> types)
     {
 //         String attacktype = params.get("attacktype"), targtype = params.get("targtype"), weaptype = params.get("weaptype");
         //according to the input params, decide which repo to use for the query
         String region = null;
         if(!regioncode.equals(""))
          region = RegionMapping.getRegion(Integer.valueOf(regioncode));
-
-        System.out.println("y-m-d: "+year+"-"+month+"-"+day+"\nR-C-S: "+region+"-"+country+"-"+state);
         List<ViewInOneLevel> result = new ArrayList<>();
-        List<View> intermediate = null;
 //        System.out.println(id);
+        List<View> intermediate = null;
         switch (situation){
             case 0:
                 intermediate =  dayStateRepo.getAllById_YearAndId_MonthAndId_CountryAndId_ProvstateOrderById(
@@ -130,85 +119,78 @@ public class FactController {
                 intermediate = yearCountryRepo.getAllById_YearAndId_RegionOrderById(year,region);
                 break;
             case 8:
-                intermediate = monthStateAttackRepo.getAllById_YearAndId_CountryAndId_ProvstateOrderById(
-                        year,country,state
-                );
+                intermediate = monthStateAttackRepo.findByAttackTypes(year,country,state,types);
                 break;
             case 9:
-                intermediate = monthCountryAttackRepo.getAllById_YearAndId_CountryOrderById(year,country);
+                intermediate = monthCountryAttackRepo.findByAttackTypes(year,country,types);
                 break;
             case 10:
-                intermediate = yearStateAttackRepo.getAllById_YearAndId_CountryOrderById(year,country);
+                intermediate = yearStateAttackRepo.findByAttackTypes(year,country,types);
                 break;
             case 11:
-                intermediate = monthRegionAttackRepo.getAllById_YearAndId_RegionOrderById(year,region);
+                intermediate = monthRegionAttackRepo.findByAttackTypes(year,region,types);
                 break;
             case 12:
-
+                intermediate = yearCountryAttackRepo.findByAttackTypes(year,region,types);
                 break;
             case 13:
-
+                intermediate = monthStateTargetRepo.findByTargetTypes(year,country,state,types);
                 break;
             case 14:
-
+                intermediate = monthCountryTargetRepo.findByTargetTypes(year,country,types);
                 break;
             case 15:
-
+                intermediate = yearStateTargetRepo.findByTargetTypes(year,country,types);
                 break;
             case 16:
-
+                intermediate = monthRegionTargetRepo.findByTargetTypes(year,month,region,types);
                 break;
             case 17:
-
+                intermediate = yearCountryTargetRepo.findByTargetTypes(year,country,types);
                 break;
             case 18:
-
+                intermediate = monthStateWeapRepo.findByWeapTypes(year,country,state,types);
                 break;
             case 19:
-
+                intermediate = monthCountryWeapRepo.findByWeapTypes(year,country,types);
                 break;
             case 20:
-
+                intermediate = yearStateWeapRepo.findByWeapTypes(year,country,types);
                 break;
             case 21:
-
+                intermediate = monthRegionWeapRepo.findByWeapTypes(year,region,types);
                 break;
             case 22:
-
+                intermediate = yearCountryWeapRepo.findByWeapTypes(year,region,types);
                 break;
             case 23:
-
+                intermediate = monthStateAttackRepo.findByAttackTypes(year,month,country,types);
                 break;
             case 24:
-
+                intermediate = monthCountryAttackRepo.findByAttackTypes(year,month,region,types);
                 break;
             case 25:
-
+                intermediate = monthStateWeapRepo.findByWeapTypes(year,month,country,types);
                 break;
             case 26:
-
+                intermediate = monthCountryWeapRepo.findByWeapTypes(year,month,region,types);
                 break;
             case 27:
-
+                intermediate = monthStateTargetRepo.findByTargetTypes(year,month,country,types);
                 break;
             case 28:
-
-                break;
-            case 29:
-
-                break;
-            case 30:
-
-                break;
-            case 31:
-
+                intermediate = monthCountryTargetRepo.findByTargetTypes(year,month,region,types);
                 break;
             default:
                 //Time and Location
                 //error
                 break;
         }
-        return intermediate;
+        if (intermediate != null){
+            for (View v : intermediate)
+                result.add(new ViewInOneLevel(v));
+        }
+        return result;
     }
 
     @GetMapping("/facts")
