@@ -13,6 +13,6 @@ public interface MonthRegionWeapRepo extends MongoRepository<MonthRegionWeap, In
 
     @Query(value = "{\"_id.year\":?0," +
             " \"_id.region\":?1," +
-            " \"_id.waeptype\":{$in:?2}}",sort = "{ _id : 1 }")
+            " \"_id.weaptype\":{$in:?2}}",sort = "{ _id : 1 }")
     List<View> findByWeapTypes(Integer year, String region, List<Integer> types);
 }

@@ -1,5 +1,6 @@
 package com.pitt.mongo.controller;
 
+import com.google.gson.Gson;
 import com.pitt.mongo.entity.Fact;
 import com.pitt.mongo.entity.RegionMapping;
 import com.pitt.mongo.entity.View;
@@ -64,8 +65,9 @@ public class FactController {
     private YearStateRepo yearStateRepo ;
     @Autowired
     private MonthStateTargetRepo monthStateTargetRepo ;
+    private Gson gson = new Gson();
     @GetMapping
-    public Object queryEntrance(
+    public String queryEntrance(
             @RequestParam("year") Integer year, @RequestParam("month") Integer month, @RequestParam("day") Integer day,
             @RequestParam("region") String regioncode, @RequestParam("country") String country, @RequestParam("state") String state,
             @RequestParam(value = "situation") Integer situation, @RequestParam("types") List<Integer> types)
@@ -190,7 +192,7 @@ public class FactController {
             for (View v : intermediate)
                 result.add(new ViewInOneLevel(v));
         }
-        return result;
+        return "{\"result\": " + gson.toJson(result) + " }";
     }
 
     @GetMapping("/facts")
