@@ -7,6 +7,6 @@ import java.util.List;
 import java.util.UUID;
 
 public interface MonthStateWeapRepos extends JpaRepository<MonthProvstateWeap, UUID> {
-    List<MonthProvstateWeap> findAllByCountryAndProvstateAndYearAndWeaptype1In(String country, String state, int year, List<Integer> types);
-    List<MonthProvstateWeap> findAllByCountryAndYearAndWeaptype1In(String country,int year,List<Integer> types);
+    List<MonthProvstateWeap> findAllByCountryAndProvstateAndYearAndWeaptypeIn(String country, String state, int year, List<Integer> types);
+    List<MonthProvstateWeap> findAllByCountryAndYearAndWeaptypeIn(String country,int year,List<Integer> types);
 }

@@ -7,6 +7,6 @@ import java.util.List;
 import java.util.UUID;
 
 public interface MonthCountryAttRepos extends JpaRepository<MonthCountryAtt, UUID> {
-    List<MonthCountryAtt> findAllByCountryAndYearAndAttacktype1In(String country, int year, List<Integer> types);
-    List<MonthCountryAtt> findAllByRegionAndYearAndMonthAndAttacktype1In(String Region, int year, int month, List<Integer> types);
+    List<MonthCountryAtt> findAllByCountryAndYearAndAttacktypeIn(String country, int year, List<Integer> types);
+    List<MonthCountryAtt> findAllByRegionAndYearAndMonthAndAttacktypeIn(String Region, int year, int month, List<Integer> types);
 }
