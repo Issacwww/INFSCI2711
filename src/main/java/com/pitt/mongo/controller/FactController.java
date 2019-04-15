@@ -70,7 +70,7 @@ public class FactController {
     public String queryEntrance(
             @RequestParam("year") Integer year, @RequestParam("month") Integer month, @RequestParam("day") Integer day,
             @RequestParam("region") String regioncode, @RequestParam("country") String country, @RequestParam("state") String state,
-            @RequestParam(value = "situation") Integer situation, @RequestParam("types") List<Integer> types)
+            @RequestParam("situation") String situation, @RequestParam("types") List<Integer> types)
     {
 //         String attacktype = params.get("attacktype"), targtype = params.get("targtype"), weaptype = params.get("weaptype");
         //according to the input params, decide which repo to use for the query
@@ -81,7 +81,7 @@ public class FactController {
 //        System.out.println(id);
         List<View> intermediate = null;
         switch (situation){
-            case 0:
+            case "230t":
                 intermediate =  dayStateRepo.getAllById_YearAndId_MonthAndId_CountryAndId_ProvstateOrderById(
                         year,month,country,state
                 );
@@ -89,98 +89,98 @@ public class FactController {
 //                for (View v: intermediate)
 //                    result.add(new ViewInOneLevel(v));
 //                return result;
-            case 1:
+            case "130t":
                 intermediate = monthStateRepo.getAllById_YearAndId_CountryAndId_ProvstateOrderById(
                         year,country,state
                 );
                 break;
-            case 2:
+            case "220t":
                 intermediate = dayCountryRepo.getAllById_YearAndId_MonthAndId_CountryOrderById(
                         year,month,country
                 );
                 break;
-            case 3:
+            case "120t":
                 intermediate = monthCountryRepo.getAllById_YearAndId_CountryOrderById(
                         year,country
                 );
                 break;
-            case 4:
+            case "120l":
                 intermediate = yearStateRepo.getAllById_YearAndId_CountryOrderById(
                         year,country
                 );
                 break;
-            case 5:
+            case "210t":
                 intermediate = dayRegionRepo.getAllById_YearAndId_MonthAndId_RegionOrderById(
                         year,month,region
                 );
                 break;
-            case 6:
+            case "110t":
                 intermediate = monthRegionRepo.getAllById_YearAndId_RegionOrderById(year,region);
                 break;
-            case 7:
+            case "110l":
                 intermediate = yearCountryRepo.getAllById_YearAndId_RegionOrderById(year,region);
                 break;
-            case 8:
+            case "131t":
                 intermediate = monthStateAttackRepo.findByAttackTypes(year,country,state,types);
                 break;
-            case 9:
+            case "121t":
                 intermediate = monthCountryAttackRepo.findByAttackTypes(year,country,types);
                 break;
-            case 10:
+            case "121l":
                 intermediate = yearStateAttackRepo.findByAttackTypes(year,country,types);
                 break;
-            case 11:
+            case "111t":
                 intermediate = monthRegionAttackRepo.findByAttackTypes(year,region,types);
                 break;
-            case 12:
+            case "111l":
                 intermediate = yearCountryAttackRepo.findByAttackTypes(year,region,types);
                 break;
-            case 13:
+            case "132t":
                 intermediate = monthStateTargetRepo.findByTargetTypes(year,country,state,types);
                 break;
-            case 14:
+            case "122t":
                 intermediate = monthCountryTargetRepo.findByTargetTypes(year,country,types);
                 break;
-            case 15:
+            case "122l":
                 intermediate = yearStateTargetRepo.findByTargetTypes(year,country,types);
                 break;
-            case 16:
+            case "112t":
                 intermediate = monthRegionTargetRepo.findByTargetTypes(year,month,region,types);
                 break;
-            case 17:
+            case "112l":
                 intermediate = yearCountryTargetRepo.findByTargetTypes(year,country,types);
                 break;
-            case 18:
+            case "133t":
                 intermediate = monthStateWeapRepo.findByWeapTypes(year,country,state,types);
                 break;
-            case 19:
+            case "123t":
                 intermediate = monthCountryWeapRepo.findByWeapTypes(year,country,types);
                 break;
-            case 20:
+            case "123l":
                 intermediate = yearStateWeapRepo.findByWeapTypes(year,country,types);
                 break;
-            case 21:
+            case "113t":
                 intermediate = monthRegionWeapRepo.findByWeapTypes(year,region,types);
                 break;
-            case 22:
+            case "113l":
                 intermediate = yearCountryWeapRepo.findByWeapTypes(year,region,types);
                 break;
-            case 23:
+            case "221l":
                 intermediate = monthStateAttackRepo.findByAttackTypes(year,month,country,types);
                 break;
-            case 24:
+            case "211l":
                 intermediate = monthCountryAttackRepo.findByAttackTypes(year,month,region,types);
                 break;
-            case 25:
+            case "223l":
                 intermediate = monthStateWeapRepo.findByWeapTypes(year,month,country,types);
                 break;
-            case 26:
+            case "213l":
                 intermediate = monthCountryWeapRepo.findByWeapTypes(year,month,region,types);
                 break;
-            case 27:
+            case "222l":
                 intermediate = monthStateTargetRepo.findByTargetTypes(year,month,country,types);
                 break;
-            case 28:
+            case "212l":
                 intermediate = monthCountryTargetRepo.findByTargetTypes(year,month,region,types);
                 break;
             default:
