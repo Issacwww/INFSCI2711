@@ -105,68 +105,68 @@ public class controller {
                 List<YearCountry> intermediate7 = yearCountryRepos.findAllByRegionAndYear(region, year);
                 return intermediate7;
             case 8:
-                List<MonthProvstateAtt> intermediate8 = monthStateAttRepos.findAllByCountryAndProvstateAndYearAndAttacktype1In(country, state,
+                List<MonthProvstateAtt> intermediate8 = monthStateAttRepos.findAllByCountryAndProvstateAndYearAndAttacktypeIn(country, state,
                         year, types);
                 return intermediate8;
             case 9:
-                List<MonthCountryAtt> intermediate9 = monthCountryAttRepos.findAllByCountryAndYearAndAttacktype1In(country, year, types);
+                List<MonthCountryAtt> intermediate9 = monthCountryAttRepos.findAllByCountryAndYearAndAttacktypeIn(country, year, types);
                 return intermediate9;
             case 10:
-                List<YearProvstateAtt> intermediate10 = yearStateAttRepos.findAllByCountryAndYearAndAttacktype1In(country, year, types);
+                List<YearProvstateAtt> intermediate10 = yearStateAttRepos.findAllByCountryAndYearAndAttacktypeIn(country, year, types);
                 return intermediate10;
             case 11:
-                List<MonthRegionAtt> intermediate11 = monthRegionAttRepos.findAllByRegionAndYearAndAttacktype1In(region,year,types);
+                List<MonthRegionAtt> intermediate11 = monthRegionAttRepos.findAllByRegionAndYearAndAttacktypeIn(region,year,types);
                 return intermediate11;
             case 12:
-                List<YearCountryAtt> intermediate12 = yearCountryAttRepos.findAllByRegionAndYearAndAttacktype1In(region, year, types);
+                List<YearCountryAtt> intermediate12 = yearCountryAttRepos.findAllByRegionAndYearAndAttacktypeIn(region, year, types);
                 return intermediate12;
             case 13:
-                List<MonthProvstateTarg> intermediate13 = monthStateTargRepos.findAllByCountryAndProvstateAndYearAndTargettype1In(country, state, year, types);
+                List<MonthProvstateTarg> intermediate13 = monthStateTargRepos.findAllByCountryAndProvstateAndYearAndTargetypeIn(country, state, year, types);
                 return intermediate13;
             case 14:
-                List<MonthCountryTarg> intermediate14 = monthCountryTargRepos.findAllByCountryAndYearAndTargettype1In(country,year,types);
+                List<MonthCountryTarg> intermediate14 = monthCountryTargRepos.findAllByCountryAndYearAndTargetypeIn(country,year,types);
                 return intermediate14;
             case 15:
-                List<YearProvstateTarg> intermediate15 = yearStateTargRepos.findAllByCountryAndYearAndTargettype1In(country,year,types);
+                List<YearProvstateTarg> intermediate15 = yearStateTargRepos.findAllByCountryAndYearAndTargetypeIn(country,year,types);
                 return intermediate15;
             case 16:
-                List<MonthRegionTarg> intermediate16 = monthRegionTargRepo.findAllByRegionAndYearAndTargettype1In(region,year,types);
+                List<MonthRegionTarg> intermediate16 = monthRegionTargRepo.findAllByRegionAndYearAndTargetypeIn(region,year,types);
                 return intermediate16;
             case 17:
-                List<YearCountryTarg> intermediate17 = yearCountryTargRepos.findAllByRegionAndYearAndTargettype1In(region, year, types);
+                List<YearCountryTarg> intermediate17 = yearCountryTargRepos.findAllByRegionAndYearAndTargetypeIn(region, year, types);
                 return intermediate17;
             case 18:
-                List<MonthProvstateWeap> intermediate18 = monthStateWeapRepos.findAllByCountryAndProvstateAndYearAndWeaptype1In(country,state,year,types);
+                List<MonthProvstateWeap> intermediate18 = monthStateWeapRepos.findAllByCountryAndProvstateAndYearAndWeaptypeIn(country,state,year,types);
                 return intermediate18;
             case 19:
-                List<MonthCountryWeap> intermediate19 = monthCountryWeapRepos.findAllByCountryAndYearAndWeaptype1In(country,year,types);
+                List<MonthCountryWeap> intermediate19 = monthCountryWeapRepos.findAllByCountryAndYearAndWeaptypeIn(country,year,types);
                 return intermediate19;
             case 20:
-                List<YearProvstateWeap> intermediate20 = yearStateWeapRepos.findAllByCountryAndYearAndWeaptype1In(country, year, types);
+                List<YearProvstateWeap> intermediate20 = yearStateWeapRepos.findAllByCountryAndYearAndWeaptypeIn(country, year, types);
                 return intermediate20;
             case 21:
-                List<MonthRegionWeap> intermediate21 = monthRegionWeapRepos.findAllByRegionAndYearAndWeaptype1In(region,year,types);
+                List<MonthRegionWeap> intermediate21 = monthRegionWeapRepos.findAllByRegionAndYearAndWeaptypeIn(region,year,types);
                 return intermediate21;
             case 22:
-                List<YearCountryWeap> intermediate22 = yearCountryWeapRepos.findAllByRegionAndYearAndWeaptype1In(region,year,types);
+                List<YearCountryWeap> intermediate22 = yearCountryWeapRepos.findAllByRegionAndYearAndWeaptypeIn(region,year,types);
                 return intermediate22;
             case 23:
-                List<MonthProvstateAtt> intermediate23 = monthStateAttRepos.findAllByCountryAndYearAndMonthAndAttacktype1In(country,year,month,types);
+                List<MonthProvstateAtt> intermediate23 = monthStateAttRepos.findAllByCountryAndYearAndMonthAndAttacktypeIn(country,year,month,types);
                 return intermediate23;
             case 24:
-                List<MonthCountryAtt> intermediate24 = monthCountryAttRepos.findAllByRegionAndYearAndMonthAndAttacktype1In(region,year,month,types);
+                List<MonthCountryAtt> intermediate24 = monthCountryAttRepos.findAllByRegionAndYearAndMonthAndAttacktypeIn(region,year,month,types);
                 return intermediate24;
             case 25:
-                List<MonthProvstateWeap> intermediate25 = monthStateWeapRepos.findAllByCountryAndYearAndWeaptype1In(country,year,types);
+                List<MonthProvstateWeap> intermediate25 = monthStateWeapRepos.findAllByCountryAndYearAndWeaptypeIn(country,year,types);
                 return intermediate25;
             case 26:
-                List<MonthCountryWeap> intermediate26 = monthCountryWeapRepos.findAllByRegionAndYearAndWeaptype1In(region,year,types);
+                List<MonthCountryWeap> intermediate26 = monthCountryWeapRepos.findAllByRegionAndYearAndWeaptypeIn(region,year,types);
                 return  intermediate26;
             case 27:
-                List<MonthProvstateTarg> intermediate27 = monthStateTargRepos.findAllByCountryAndYearAndTargettype1In(country,year,types);
+                List<MonthProvstateTarg> intermediate27 = monthStateTargRepos.findAllByCountryAndYearAndTargetypeIn(country,year,types);
                 return intermediate27;
             case 28:
-                List<MonthCountryTarg> intermediate28 = monthCountryTargRepos.findAllByRegionAndYearAndTargettype1In(region,year,types);
+                List<MonthCountryTarg> intermediate28 = monthCountryTargRepos.findAllByRegionAndYearAndTargetypeIn(region,year,types);
                 return intermediate28;
                 default:
                     return null;

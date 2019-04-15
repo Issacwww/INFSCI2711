@@ -7,6 +7,6 @@ import java.util.List;
 import java.util.UUID;
 
 public interface MonthCountryTargRepos extends JpaRepository<MonthCountryTarg, UUID> {
-    List<MonthCountryTarg> findAllByCountryAndYearAndTargettype1In(String country, int year, List<Integer> types);
-    List<MonthCountryTarg> findAllByRegionAndYearAndTargettype1In(String region, int year, List<Integer> types);
+    List<MonthCountryTarg> findAllByCountryAndYearAndTargetypeIn(String country, int year, List<Integer> types);
+    List<MonthCountryTarg> findAllByRegionAndYearAndTargetypeIn(String region, int year, List<Integer> types);
 }
