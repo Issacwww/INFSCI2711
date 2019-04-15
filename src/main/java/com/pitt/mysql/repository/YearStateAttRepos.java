@@ -7,5 +7,5 @@ import java.util.List;
 import java.util.UUID;
 
 public interface YearStateAttRepos extends JpaRepository<YearProvstateAtt, UUID> {
-    List<YearProvstateAtt> findAllByCountryAndYearAndAttacktype1In(String country, int year, List<Integer> types);
+    List<YearProvstateAtt> findAllByCountryAndYearAndAttacktypeIn(String country, int year, List<Integer> types);
 }

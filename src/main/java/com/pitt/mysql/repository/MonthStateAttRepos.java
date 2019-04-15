@@ -9,6 +9,6 @@ import java.util.UUID;
 
 public interface MonthStateAttRepos extends JpaRepository<MonthProvstateAtt, UUID> {
 //    @Query(value = "SELECT  '*' from MonthProvstateAtt where country = ?1 and provstate = ?2 and year = ?3 ")
-    List<MonthProvstateAtt> findAllByCountryAndProvstateAndYearAndAttacktype1In(String country, String state, int year, List<Integer> type);
-    List<MonthProvstateAtt> findAllByCountryAndYearAndMonthAndAttacktype1In(String country, int year, int month, List<Integer> type);
+    List<MonthProvstateAtt> findAllByCountryAndProvstateAndYearAndAttacktypeIn(String country, String state, int year, List<Integer> type);
+    List<MonthProvstateAtt> findAllByCountryAndYearAndMonthAndAttacktypeIn(String country, int year, int month, List<Integer> type);
 }
