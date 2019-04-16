@@ -7,4 +7,4 @@
 
 ---
 
-This project is an data warehouse backend connected with MySql, MongoDB, InfluxDB
+This project is an data warehouse backend connected with MySql, MongoDB
